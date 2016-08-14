@@ -32,7 +32,6 @@ public class PeriodicTable {
 	public boolean checkRule2(String elementName, String symbol){
 		String s=symbol.toLowerCase(Locale.US);
 		for(int i=0; i < s.length(); i++){
-			
 			if(elementName.indexOf(s.charAt(i))>=0){
 				return true;
 			}
@@ -50,7 +49,6 @@ public class PeriodicTable {
 	public boolean checkRule3(String elementName, String symbol){
 		String lower_case_symbol=symbol.toLowerCase(Locale.US);
 		if(elementName.indexOf(lower_case_symbol.charAt(0))<=elementName.indexOf(lower_case_symbol.charAt(1))){
-			
 			return true;
 		}
 		return false;
@@ -62,13 +60,10 @@ public class PeriodicTable {
 	
 	public boolean checkRule4(String elementName, String symbol){
 		String lower_case_symbol=symbol.toLowerCase(Locale.US);
-		
 		if(lower_case_symbol.charAt(0)!=lower_case_symbol.charAt(1)){
 			return true;
 		}
-		
 		if(lower_case_symbol.charAt(0)==lower_case_symbol.charAt(1)){
-			
 			if(elementName.length() - elementName.replace(Character.toString(lower_case_symbol.charAt(0)), "").length()==2){
 				return true;
 			}
@@ -76,7 +71,5 @@ public class PeriodicTable {
 		return false;
 		
 	}
-
-
 
 }
