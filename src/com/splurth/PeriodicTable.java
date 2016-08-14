@@ -6,10 +6,9 @@ public class PeriodicTable {
 
     	
 	public boolean isValidSymbol(String elementName, String symbol){
-		String testElementName="Spenglerium";
-		String testSymbolName="Ee";
 		PeriodicTable pt=new PeriodicTable();
-		if(pt.checkRule1(testElementName, testSymbolName) & pt.checkRule2(testElementName, testSymbolName) & pt.checkRule3(testElementName, testSymbolName) & pt.checkRule4(testElementName, testSymbolName)){
+		String lower_case_symbol=symbol.toLowerCase(Locale.US);
+		if(pt.checkRule1(elementName, lower_case_symbol) && pt.checkRule2(elementName, lower_case_symbol) && pt.checkRule3(elementName, lower_case_symbol) && pt.checkRule4(elementName, lower_case_symbol)){
 			return true;
 		}
 		return false;
@@ -18,6 +17,7 @@ public class PeriodicTable {
 	/* Rule 1: All chemical symbols must be exactly two letters, 
 	 * so B is not a valid symbol for Boron.
 	 */
+	
 	public boolean checkRule1(String elementName, String symbol){
 		if(symbol.length()==2){
 			return true;
@@ -34,7 +34,7 @@ public class PeriodicTable {
 		String s=symbol.toLowerCase(Locale.US);
 		for(int i=0; i < s.length(); i++){
 			
-			if(elementName.indexOf(i)>=0){
+			if(elementName.indexOf(s.charAt(i))>=0){
 				return true;
 			}
 		}
@@ -49,8 +49,9 @@ public class PeriodicTable {
 	 */
 	
 	public boolean checkRule3(String elementName, String symbol){
+		String lower_case_symbol=symbol.toLowerCase(Locale.US);
 		
-		if(elementName.indexOf(symbol.charAt(0))>elementName.indexOf(symbol.charAt(1))){
+		if(elementName.indexOf(lower_case_symbol.charAt(0))<=elementName.indexOf(lower_case_symbol.charAt(1))){
 			
 			return true;
 		}
@@ -62,14 +63,20 @@ public class PeriodicTable {
 	 */
 	
 	public boolean checkRule4(String elementName, String symbol){
+		String lower_case_symbol=symbol.toLowerCase(Locale.US);
 		
-		if(symbol.charAt(0)==symbol.charAt(1)){
+		if(lower_case_symbol.charAt(0)!=lower_case_symbol.charAt(1)){
+			return true;
+		}
+		
+		if(lower_case_symbol.charAt(0)==lower_case_symbol.charAt(1)){
 			
-			if(elementName.length() - elementName.replace(Character.toString(symbol.charAt(0)), "").length()==2){
+			if(elementName.length() - elementName.replace(Character.toString(lower_case_symbol.charAt(0)), "").length()==2){
 				return true;
 			}
 		}
 		return false;
+		
 	}
 
 
