@@ -10,8 +10,8 @@ public class validNameTest {
 	public void test() {
 		
 		PeriodicTable pt=new PeriodicTable();
-		boolean isValid= pt.isValidSymbol("Zeddemorium", "Zr");
-		assertEquals(true, isValid);
+		boolean isValid= pt.isValidSymbol("Tullium", "Ty");
+		assertEquals(false, isValid);
 	}
 
 }

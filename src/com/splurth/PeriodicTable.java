@@ -4,7 +4,6 @@ import java.util.Locale;
 
 public class PeriodicTable {
 
-    	
 	public boolean isValidSymbol(String elementName, String symbol){
 		PeriodicTable pt=new PeriodicTable();
 		String lower_case_symbol=symbol.toLowerCase(Locale.US);
@@ -50,7 +49,6 @@ public class PeriodicTable {
 	
 	public boolean checkRule3(String elementName, String symbol){
 		String lower_case_symbol=symbol.toLowerCase(Locale.US);
-		
 		if(elementName.indexOf(lower_case_symbol.charAt(0))<=elementName.indexOf(lower_case_symbol.charAt(1))){
 			
 			return true;

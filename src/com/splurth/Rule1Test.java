@@ -9,7 +9,7 @@ public class Rule1Test {
 	@Test
 	public void test() {
 		PeriodicTable pt=new PeriodicTable();
-		boolean passedRule1= pt.checkRule1("Zeddemorium", "Zr");
+		boolean passedRule1= pt.checkRule1("Tullium", "Ty");
 		assertEquals(true, passedRule1);
 	}
 
