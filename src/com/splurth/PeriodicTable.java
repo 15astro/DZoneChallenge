@@ -4,12 +4,14 @@ import java.util.Locale;
 
 public class PeriodicTable {
 
-	
+    	
 	public boolean isValidSymbol(String elementName, String symbol){
-		
-		
-		
-	
+		String testElementName="Spenglerium";
+		String testSymbolName="Ee";
+		PeriodicTable pt=new PeriodicTable();
+		if(pt.checkRule1(testElementName, testSymbolName) & pt.checkRule2(testElementName, testSymbolName) & pt.checkRule3(testElementName, testSymbolName) & pt.checkRule4(testElementName, testSymbolName)){
+			return true;
+		}
 		return false;
 	}
 	
@@ -22,6 +24,7 @@ public class PeriodicTable {
 		}
 		return false;
 	}
+	
 	/* Rule 2: Both letters in the symbol must appear in the element name, 
 	 * but the first letter of the element name does not necessarily need to appear in the symbol. 
 	 * So Hg is not valid for Mercury, but Cy is.
@@ -35,8 +38,8 @@ public class PeriodicTable {
 				return true;
 			}
 		}
-			return false;
-		}
+		return false;
+	}
 	
 	/*
 	 * Rule 3: The two letters must appear in order in the element name.
@@ -48,11 +51,12 @@ public class PeriodicTable {
 	public boolean checkRule3(String elementName, String symbol){
 		
 		if(elementName.indexOf(symbol.charAt(0))>elementName.indexOf(symbol.charAt(1))){
+			
 			return true;
 		}
-		
 		return false;
 	}
+	
 	/* Rule 4: If the two letters in the symbol are the same, 
 	 * it must appear twice in the element name. So Nn is valid for Xenon, but Xx and Oo are not.
 	 */
@@ -62,12 +66,9 @@ public class PeriodicTable {
 		if(symbol.charAt(0)==symbol.charAt(1)){
 			
 			if(elementName.length() - elementName.replace(Character.toString(symbol.charAt(0)), "").length()==2){
-				
 				return true;
 			}
-			
 		}
-		
 		return false;
 	}
 
