@@ -6,7 +6,7 @@ public class PeriodicTable {
 
 	public boolean isValidSymbol(String elementName, String symbol){
 		PeriodicTable pt=new PeriodicTable();
-		String lower_case_symbol=symbol.toLowerCase(Locale.US);
+		String lower_case_symbol=symbol.toLowerCase();
 		if(pt.checkRule1(elementName, lower_case_symbol) && pt.checkRule2(elementName, lower_case_symbol) && pt.checkRule3(elementName, lower_case_symbol) && pt.checkRule4(elementName, lower_case_symbol)){
 			return true;
 		}
@@ -30,12 +30,11 @@ public class PeriodicTable {
 	 */
 	
 	public boolean checkRule2(String elementName, String symbol){
-		String s=symbol.toLowerCase(Locale.US);
-		for(int i=0; i < s.length(); i++){
-			if(elementName.indexOf(s.charAt(i))>=0){
+		String s=symbol.toLowerCase();
+		String e=elementName.toLowerCase();
+			if((e.indexOf(s.charAt(0))>=0) && (e.indexOf(s.charAt(1)))>=0 ){
 				return true;
 			}
-		}
 		return false;
 	}
 	
@@ -47,8 +46,16 @@ public class PeriodicTable {
 	 */
 	
 	public boolean checkRule3(String elementName, String symbol){
-		String lower_case_symbol=symbol.toLowerCase(Locale.US);
-		if(elementName.indexOf(lower_case_symbol.charAt(0))<=elementName.indexOf(lower_case_symbol.charAt(1))){
+		String lower_case_symbol=symbol.toLowerCase();
+		String e=elementName.toLowerCase();
+		
+		int lastIndex = e.indexOf(lower_case_symbol.charAt(1));
+		int maxIndex=0;
+		while(lastIndex >= 0) {
+			maxIndex=lastIndex;
+			lastIndex = e.indexOf(lower_case_symbol.charAt(1), lastIndex+1);
+		}
+		if(e.indexOf(lower_case_symbol.charAt(0))<=maxIndex){
 			return true;
 		}
 		return false;
